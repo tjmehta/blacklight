@@ -6,7 +6,7 @@ Escape whitespace in strings
 ```js
 var blacklight = require('blacklight');
 
-var escaped = blacklight('\t\r\n'); // '\t\r\n' escaped, '\\t\\r\\n'
+var escaped = blacklight.escape('\t\r\n'); // '\t\r\n' escaped, '\\t\\r\\n'
 ```
 ### Log
 ```js

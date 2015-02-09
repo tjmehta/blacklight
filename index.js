@@ -1,5 +1,7 @@
 'use strict';
 
+var isString = require('101/is-string');
+
 var whitespaces = [
   {
      re: /\f/g,
@@ -110,6 +112,9 @@ var whitespaces = [
 module.exports = escapeWhitespace;
 
 function escapeWhitespace (str) {
+  if (!isString(str) && str.toString) {
+    str = str.toString();
+  }
   return whitespaces.reduce(function (str, obj) {
     return str.replace(obj.re, '\\'+obj.str);
   }, str);
@@ -118,7 +123,9 @@ function escapeWhitespace (str) {
 module.exports.log = function (/* arguments */) {
   if (arguments.length === 0) { return console.log(); }
   var escaped = Array.prototype.map.call(arguments, function (arg) {
-    return '"' + escapeWhitespace(arg) + '"';
+    return isString(arg) ?
+      '"' + escapeWhitespace(arg) + '"':
+      arg;
   });
   return console.log.apply(console, escaped);
 };

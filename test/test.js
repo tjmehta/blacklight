@@ -19,6 +19,11 @@ describe('escape', function () {
     expect(data).to.equal(expected);
     done();
   });
+  it('should toString and then escape a non-string', function (done) {
+    var data = blacklight({});
+    expect(data).to.equal({}.toString());
+    done();
+  });
 });
 
 describe('log', function () {
@@ -37,7 +42,7 @@ describe('log', function () {
       expect(data).to.equal(expectedLog);
       done();
     };
-    blacklight.log(str, str);
+    blacklight.log(str);
   });
   it('should log whitespace escaped with quotes for multiple arguments', function (done) {
     console.log = function (data1, data2) {
@@ -54,5 +59,15 @@ describe('log', function () {
       done();
     };
     blacklight.log();
+  });
+  it('should log non-string types like normal', function (done) {
+    var obj = { foo: 'bar' };
+    console.log = function (data, data2) {
+      var expectedLog = '"' + expected + '"';
+      expect(data).to.equal(expectedLog);
+      expect(data2).to.equal(obj);
+      done();
+    };
+    blacklight.log(str, obj);
   });
 });
