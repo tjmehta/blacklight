@@ -1,4 +1,4 @@
-# blacklight
+# blacklight [![Build Status](https://travis-ci.org/tjmehta/blacklight.svg?branch=master)](https://travis-ci.org/tjmehta/blacklight)
 Escape whitespace in strings
 
 ## Usage
