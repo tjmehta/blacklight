@@ -13,6 +13,8 @@ var escaped = blacklight.escape('\t\r\n'); // '\t\r\n' escaped, '\\t\\r\\n'
 var blacklight = require('blacklight');
 
 blacklight.log('\t\r\n'); // prints '\t\r\n' instead of whitespace
+// or just
+blacklight('\t\r\n'); // prints '\t\r\n' instead of whitespace
 ```
 
 ## License

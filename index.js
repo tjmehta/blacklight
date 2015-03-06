@@ -109,7 +109,9 @@ var whitespaces = [
   }
 ];
 
-module.exports = escapeWhitespace;
+module.exports = log;
+module.exports.escape = escapeWhitespace;
+module.exports.log    = log;
 
 function escapeWhitespace (str) {
   if (!isString(str) && str.toString) {
@@ -120,7 +122,7 @@ function escapeWhitespace (str) {
   }, str);
 }
 
-module.exports.log = function (/* arguments */) {
+function log (/* arguments */) {
   if (arguments.length === 0) { return console.log(); }
   var escaped = Array.prototype.map.call(arguments, function (arg) {
     return isString(arg) ?
