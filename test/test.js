@@ -15,12 +15,12 @@ var str = ' fnrtv​u00A0u1680​u180eu2000​u2001u2002​u2003u2004​u2005u20
 var expected = ' fnrtv​u00A0u1680​u180eu2000​u2001u2002​u2003u2004​u2005u2006​u2007u2008​u2009u200a​u2028u2029​u2028u2029​u202fu205f​u3000 ';
 describe('escape', function () {
   it('should escape a string', function (done) {
-    var data = blacklight(str);
+    var data = blacklight.escape(str);
     expect(data).to.equal(expected);
     done();
   });
   it('should toString and then escape a non-string', function (done) {
-    var data = blacklight({});
+    var data = blacklight.escape({});
     expect(data).to.equal({}.toString());
     done();
   });
